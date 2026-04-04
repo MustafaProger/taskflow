@@ -1,10 +1,14 @@
-import './App.css'
-
 function App() {
-
-  return (
-    <h1>Taskflow</h1>
-  )
+	return (
+		<div className='glass-wrap'>
+			<button
+				className='glass-surface'
+				type='button'>
+				<span>Кнопка</span>
+			</button>
+			<div className='glass-shadow'></div>
+		</div>
+	);
 }
 
-export default App
+export default App;
