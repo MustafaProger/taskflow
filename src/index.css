@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-	--color-background: #C3C9D1;
-	--color-foreground: #111827;
+	--color-background: #c9cfdf;
+	--color-foreground: #2a3040;
 
 	--color-muted: #f3f4f6;
 	--color-muted-foreground: #6b7280;
 
-	--color-primary: #111827;
+	--color-primary: #668eb9;
 	--color-primary-foreground: #ffffff;
 
 	--text-default: 16px;
@@ -19,6 +19,7 @@
 
 	--anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
 
+	--spacing-container: 20px 15px;
 }
 
 @property --angle-1 {
@@ -38,9 +39,11 @@
 	*::after,
 	*::before {
 		font-family:
-			-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+			-apple-system, BlinkMacSystemFont, "Montserrat", Montserrat, Helvetica,
+			Arial, sans-serif;
 		box-sizing: border-box;
 		line-height: 1.5;
+		color: var(--color-foreground);
 	}
 
 	body {
@@ -54,7 +57,7 @@
 
 @layer components {
 	.glass-wrap {
-		@apply relative inline-block w-fit max-w-full self-start z-2 bg-transparent pointer-events-none align-top transition-transform rounded-glass-pill;
+		@apply relative inline-block w-fit max-w-full z-2 bg-transparent pointer-events-none align-top transition-transform rounded-glass-pill;
 
 		transform-style: preserve-3d;
 		transition: transform var(--animate-hover-time) var(--anim--hover-ease);
@@ -101,6 +104,7 @@
 		@apply relative z-3 max-w-full border-0 pointer-events-auto isolate no-underline leading-[1.15] rounded-glass-pill;
 
 		--border-width: clamp(1px, 0.0625em, 4px);
+
 		display: var(--glass-display, inline-flex);
 		align-items: var(--glass-align, center);
 		justify-content: var(--glass-justify, center);
@@ -108,9 +112,6 @@
 
 		width: var(--glass-width, auto);
 		min-width: var(--glass-min-width, auto);
-
-		padding-inline: var(--glass-padding-x, 1.5em);
-		padding-block: var(--glass-padding-y, 0.875em);
 
 		background: linear-gradient(
 			-75deg,
@@ -134,7 +135,7 @@
 	}
 
 	.glass-surface > * {
-		@apply relative z-2 min-w-0;
+		@apply relative z-2 min-w-0 p-[12px_20px];
 	}
 
 	.glass-surface::before {

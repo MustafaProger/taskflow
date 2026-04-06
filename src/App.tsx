@@ -1,12 +1,9 @@
+import Header from "./components/layout/Header";
+
 function App() {
 	return (
-		<div className='glass-wrap'>
-			<button
-				className='glass-surface'
-				type='button'>
-				<span>Кнопка</span>
-			</button>
-			<div className='glass-shadow'></div>
+		<div className='p-container max-w-200 m-auto'>
+			<Header/>
 		</div>
 	);
 }
