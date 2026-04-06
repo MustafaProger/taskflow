@@ -53,18 +53,18 @@
 	button {
 		cursor: pointer;
 	}
+
+	input {
+		outline: none;
+	}
 }
 
 @layer components {
 	.glass-wrap {
-		@apply relative inline-block w-fit max-w-full z-2 bg-transparent pointer-events-none align-top transition-transform rounded-glass-pill;
+		@apply block w-fit max-w-full z-2 bg-transparent pointer-events-none align-top transition-transform rounded-glass-pill;
 
 		transform-style: preserve-3d;
 		transition: transform var(--animate-hover-time) var(--anim--hover-ease);
-	}
-
-	.glass-wrap {
-		@apply block;
 	}
 
 	.glass-shadow {
@@ -80,10 +80,10 @@
 	}
 
 	.glass-shadow::after {
-		@apply absolute inset-0 z-0 pointer-events-none opacity-100 overflow-visible rounded-glass-pill;
+		@apply absolute inset-0 z-0 pointer-events-none opacity-80 overflow-visible rounded-glass-pill;
 
 		content: "";
-		background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
 
 		width: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
 		height: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
@@ -93,8 +93,8 @@
 		padding: 0.125em;
 
 		mask:
-			linear-gradient(#000 0 0) content-box,
-			linear-gradient(#000 0 0);
+			linear-gradient(#777777 0 0) content-box,
+			linear-gradient(#777777 0 0);
 		mask-composite: exclude;
 
 		transition: all var(--animate-hover-time) var(--anim--hover-ease);
@@ -228,30 +228,30 @@
 		--angle-1: -75deg;
 	}
 
-	.glass-wrap:has(.glass-surface:is(:hover, :focus-visible)) {
+	.glass-wrap:has(> .glass-surface:is(:hover, :focus-visible)) {
 		transform: rotate3d(1, 0, 0, 10deg);
 	}
 
-	.glass-wrap:has(.glass-surface:is(:hover, :focus-visible)) .glass-shadow {
+	.glass-wrap:has(> .glass-surface:is(:hover, :focus-visible)) > .glass-shadow {
 		filter: blur(clamp(2px, 0.0625em, 6px));
 		transition: filter var(--animate-hover-time) var(--anim--hover-ease);
 	}
 
-	.glass-wrap:has(.glass-surface:is(:hover, :focus-visible))
-		.glass-shadow::after {
+	.glass-wrap:has(> .glass-surface:is(:hover, :focus-visible))
+		> .glass-shadow::after {
 		top: calc(var(--shadow-cuttoff-fix) - 0.875em);
 		opacity: 1;
 	}
 
-	.glass-wrap:has(.glass-surface:active) {
+	.glass-wrap:has(> .glass-surface:active) {
 		transform: rotate3d(1, 0, 0, 25deg);
 	}
 
-	.glass-wrap:has(.glass-surface:active) .glass-shadow {
+	.glass-wrap:has(> .glass-surface:active) > .glass-shadow {
 		filter: blur(clamp(2px, 0.125em, 12px));
 	}
 
-	.glass-wrap:has(.glass-surface:active) .glass-shadow::after {
+	.glass-wrap:has(> .glass-surface:active) > .glass-shadow::after {
 		top: calc(var(--shadow-cuttoff-fix) - 0.5em);
 		opacity: 0.75;
 	}
@@ -268,8 +268,8 @@
 			--angle-1: -75deg;
 		}
 
-		.glass-wrap:has(.glass-surface:is(:hover, :focus-visible)),
-		.glass-wrap:has(.glass-surface:active) {
+		.glass-wrap:has(> .glass-surface:is(:hover, :focus-visible)),
+		.glass-wrap:has(> .glass-surface:active) {
 			@apply transform-none;
 		}
 	}

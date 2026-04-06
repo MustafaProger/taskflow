@@ -1,3 +1,5 @@
+import "./GlassSurface.css";
+
 type GlassSurfaceProps = {
 	children: React.ReactNode;
 	wrapClassName?: string;
@@ -9,7 +11,6 @@ const GlassSurface = ({
 	wrapClassName = "",
 	surfaceClassName = "",
 }: GlassSurfaceProps) => {
-
 	return (
 		<div className={`glass-wrap ${wrapClassName}`}>
 			<div className={`glass-surface ${surfaceClassName}`}>{children}</div>

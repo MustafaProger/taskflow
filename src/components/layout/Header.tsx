@@ -2,7 +2,7 @@ import GlassSurface from "../ui/GlassSurface";
 
 const Header = () => {
 	return (
-		<div className='flex justify-between items-center'>
+		<div className='flex justify-between items-center pb-5'>
 			<div className='flex gap-2 items-center'>
 				<GlassSurface>
 					<span className='px-3 py-2 text-3xl text-primary'>✓</span>
@@ -11,7 +11,7 @@ const Header = () => {
 			</div>
 			<div>
 				<GlassSurface>
-					<button className='font-bold flex gap-1'>Войти</button>
+					<button className='font-bold'>Войти</button>
 				</GlassSurface>
 			</div>
 		</div>
