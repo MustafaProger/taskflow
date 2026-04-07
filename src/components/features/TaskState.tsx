@@ -1,7 +1,5 @@
 const TaskState = () => {
-  return (
-    <div>TaskState</div>
-  )
-}
+	return <div>TaskState</div>;
+};
 
-export default TaskState
+export default TaskState;
