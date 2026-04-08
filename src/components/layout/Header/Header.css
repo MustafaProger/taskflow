@@ -1,0 +1,36 @@
+.typing-effect {
+	max-width: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	opacity: 0;
+	border-right: 2px solid transparent;
+	transition:
+		max-width 380ms ease-out,
+		opacity 260ms ease-out;
+}
+
+.logo-group .logo-badge {
+	transition: color 220ms ease;
+}
+
+.logo-group:hover .typing-effect,
+.logo-group:focus-within .typing-effect {
+	max-width: 20ch;
+	opacity: 1;
+	transition-timing-function: steps(20, end), ease-out;
+	animation: cursor 0.65s step-end infinite;
+}
+
+@keyframes cursor {
+	0% {
+		border-color: var(--color-primary);
+	}
+
+	50% {
+		border-color: transparent;
+	}
+
+	100% {
+		border-color: var(--color-primary);
+	}
+}

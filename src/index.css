@@ -40,28 +40,18 @@
 
 @layer components {
 	.ui-btn {
+		padding: 10px 20px;
 		border-radius: 999px;
 		font-weight: 700;
-		transition:
-			transform 160ms ease,
-			box-shadow 160ms ease,
-			filter 160ms ease,
-			background-color 160ms ease,
-			border-color 160ms ease;
-	}
-
-	.ui-btn:hover {
-		transform: translateY(-1.5px);
-		filter: brightness(1.06);
+		transition: all ease-in-out 0.3s;
 	}
 
 	.ui-btn:active {
-		transform: translateY(0.5px);
+		transform: scale(0.9);
 	}
-
 	.ui-btn:focus-visible {
 		box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
-	}
+	} 
 
 	.ui-btn--primary {
 		padding: 10px 20px;
@@ -70,12 +60,7 @@
 		box-shadow: 0 12px 24px rgba(79, 70, 229, 0.22);
 	}
 
-	.ui-btn--primary:active {
-		box-shadow: 0 8px 18px rgba(79, 70, 229, 0.2);
-	}
-
 	.ui-btn--dark {
-		border: 1px solid rgba(15, 23, 42, 0.1);
 		background: rgba(15, 23, 42, 0.94);
 		color: rgba(255, 255, 255, 0.96);
 		box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
@@ -85,40 +70,4 @@
 		box-shadow: 0 8px 18px rgba(15, 23, 42, 0.15);
 	}
 
-	.typing-effect {
-		max-width: 0;
-		overflow: hidden;
-		white-space: nowrap;
-		opacity: 0;
-		border-right: 2px solid transparent;
-		transition:
-			max-width 380ms ease-out,
-			opacity 260ms ease-out;
-	}
-
-	.logo-group .logo-badge {
-		transition: color 220ms ease;
-	}
-
-	.logo-group:hover .typing-effect,
-	.logo-group:focus-within .typing-effect {
-		max-width: 20ch;
-		opacity: 1;
-		transition-timing-function: steps(20, end), ease-out;
-		animation: cursor 0.65s step-end infinite;
-	}
-
-	@keyframes cursor {
-		0% {
-			border-color: var(--color-primary);
-		}
-
-		50% {
-			border-color: transparent;
-		}
-
-		100% {
-			border-color: var(--color-primary);
-		}
-	}
 }

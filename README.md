@@ -35,3 +35,4 @@
 - [Что такое `ReactNode`?](./new-knowledge/TypeScript.md#typescript-q1)
 - [Как устроены `props` и где тут `children`?](./new-knowledge/React.md#react-q1)
 - [Какие бывают категории компонентов в React-проекте?](./new-knowledge/React.md#react-q2)
+- [Что такое `useLayoutEffect` и чем он отличается от `useEffect`?](./new-knowledge/React.md#react-q3)
