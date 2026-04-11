@@ -119,15 +119,17 @@ const TaskState = () => {
 	}
 
 	return (
-		<section className='mt-5 flex justify-between'>
-			<div className='relative inline-flex gap-0 rounded-full border p-0.5 border-slate-200 bg-slate-50/80'>
+		<section className='mt-5 flex justify-between gap-4'>
+			<div className='relative inline-flex gap-0 rounded-full border border-white/10 bg-white/[0.04] p-0.5'>
 				{states.map(({ key, label }) => {
 					return (
 						<button
 							key={key}
 							onClick={() => setActiveState(key)}
 							ref={(el) => syncActiveBtnRef(el, key)}
-							className='z-1 ui-btn'>
+							className={`z-1 ui-btn ${
+								key === activeState ? "text-text" : "text-white/65 hover:text-text"
+							}`}>
 							{label}
 						</button>
 					);
@@ -143,7 +145,7 @@ const TaskState = () => {
 						}`}></span>
 				</span>
 			</div>
-			<button className='ui-btn ui-btn--dark'>+</button>
+			<button className='ui-btn ui-btn--secondary'>+</button>
 		</section>
 	);
 };

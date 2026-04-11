@@ -3,7 +3,10 @@
 	overflow: hidden;
 	white-space: nowrap;
 	opacity: 0;
-	border-right: 2px solid transparent;
+	padding-right: 4px;
+	font-weight: 800;
+	letter-spacing: -0.05em;
+	border-right: 2px solid var(--color-secondary);
 	transition:
 		max-width 380ms ease-out,
 		opacity 260ms ease-out;
@@ -23,7 +26,7 @@
 
 @keyframes cursor {
 	0% {
-		border-color: var(--color-primary);
+		border-color: var(--color-secondary);
 	}
 
 	50% {
@@ -31,6 +34,6 @@
 	}
 
 	100% {
-		border-color: var(--color-primary);
+		border-color: var(--color-secondary);
 	}
 }

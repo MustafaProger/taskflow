@@ -1,4 +1,3 @@
-
 /*
 	Видимое движение индикатора начинается не в CSS само по себе, а после того,
 	как TaskState.tsx меняет inline-style у .task-state-indicator.
@@ -12,36 +11,37 @@
 	   и убирает состояние движения.
 */
 .task-state-indicator {
-    pointer-events: none;
-    position: absolute;
-    left: 0;
-    top: 2px;
-    z-index: 0;
-    height: calc(100% - 4px);
-    transition:
-        transform ease-out 0.3s,
-        width ease-out 0.3s,
-        height  ease-out 0.3s;
-
+	pointer-events: none;
+	position: absolute;
+	left: 0;
+	top: 2px;
+	z-index: 0;
+	height: calc(100% - 4px);
+	transition:
+		transform ease-out 0.3s,
+		width ease-out 0.3s,
+		height ease-out 0.3s;
 }
 
 .task-state-indicator__inner {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 999px;
-    /* background: rgba(255, 255, 255, 0.94); */
-    border: 1px solid rgba(255, 255, 255, 0.94);
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.16);
-    transform: scale(1);
-    transition: all 0.3s;
-    will-change: transform;
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 999px;
+	background: rgba(0, 0, 0, 0.2);
+	border: 1px solid var(--color-border);
+	box-shadow:
+		inset 0 1px 0 rgba(0, 0, 0, 0.1),
+		0 18px 36px rgba(0, 0, 0, 0.18);
+	transform: scale(1);
+	transition: all 0.3s;
+	will-change: transform;
+	backdrop-filter: blur(0.5px);
 }
 
 .task-state-indicator__inner--moving {
-    height: 120%;
-    transform: translateY(-4px) scale(1.2);
-    backdrop-filter: blur(0.5px);
-    border: 1px solid rgb(215, 215, 215);
+	height: 120%;
+	transform: translateY(-4px) scale(1.2);
+	backdrop-filter: blur(0.5px);
 }
