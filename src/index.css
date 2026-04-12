@@ -11,6 +11,8 @@
 	--color-border: rgba(255, 255, 255, 0.14);
 	--color-text: rgba(255, 255, 255, 0.96);
 	--color-text-muted: rgba(255, 255, 255, 0.72);
+
+	--color-container: rgba(255,255,255,0.05);
 }
 
 @layer base {
