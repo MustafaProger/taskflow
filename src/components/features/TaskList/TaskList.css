@@ -1,0 +1,82 @@
+.tasklist__container {
+	display: flex;
+	border-radius: 20px;
+	margin: 8px 0;
+	padding: 8px 16px 12px 16px;
+	transition: all 0.2s;
+	background-color: var(--color-bg-state);
+	border-left: transparent;
+
+	&.high .tasklist__btn-done {
+		border: 1px solid var(--color-high);
+	}
+
+	&.medium .tasklist__btn-done {
+		border: 1px solid var(--color-medium);
+	}
+
+	&.low .tasklist__btn-done {
+		border: 1px solid var(--color-low);
+	}
+
+	&.done {
+        background-color: var(--color-bg-search);
+		.tasklist__title {
+			text-decoration: line-through;
+		}
+
+		&.high {
+			border-left: 5px solid var(--color-high);
+			.tasklist__btn-done {
+				background-color: var(--color-high);
+			}
+		}
+
+		&.medium {
+			border-left: 5px solid var(--color-medium);
+			.tasklist__btn-done {
+				background-color: var(--color-medium);
+			}
+		}
+
+		&.low {
+			border-left: 5px solid var(--color-low);
+			.tasklist__btn-done {
+				background-color: var(--color-low);
+			}
+		}
+	}
+}
+
+.tasklist__btn-done {
+	border-radius: calc(infinity * 1px);
+	font-size: 12px;
+	padding: 8px 12px;
+	margin-top: 6px;
+	background-color: transparent;
+}
+
+.tasklist__title {
+	color: var(--color-text);
+	font-size: 20px;
+}
+
+.tasklist__descr {
+	color: var(--color-text-muted);
+	font-size: 14px;
+}
+
+.tasklist__label-list {
+	display: flex;
+	gap: 4px;
+	margin-top: 8px;
+}
+
+.tasklist__label-item {
+	color: var(--color-text-muted);
+	border-radius: 20px;
+	border-color: rgba(255, 255, 255, 0.1);
+	background-color: rgba(255, 255, 255, 0.05);
+	padding: 4px 10px;
+	font-size: 12px;
+}

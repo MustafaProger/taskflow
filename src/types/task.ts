@@ -5,9 +5,9 @@ export type TaskStatus = "active" | "done";
 export type Task = {
 	id: number;
 	title: string;
-	description: string;
+	description?: string;
 	priority: TaskPriority;
 	status: TaskStatus;
-	time: string;
-	labels: [];
+	time?: string;
+	labels?: string[];
 };

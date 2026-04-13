@@ -12,7 +12,13 @@
 	--color-text: rgba(255, 255, 255, 0.96);
 	--color-text-muted: rgba(255, 255, 255, 0.72);
 
-	--color-container: rgba(255,255,255,0.05);
+	--color-bg-container: rgba(255, 255, 255, 0.03);
+	--color-bg-search: rgba(255, 255, 255, 0.07);
+	--color-bg-state: rgb(255, 255, 255, 0.02);
+
+	--color-high: #FF6247;
+	--color-medium: #FFA503;
+	--color-low: #3a83f6;
 }
 
 @layer base {
@@ -21,7 +27,7 @@
 	}
 
 	html {
-		/* color-scheme: dark; */
+		color-scheme: dark;
 		font-family:
 			ui-sans-serif,
 			system-ui,
