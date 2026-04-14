@@ -3,6 +3,9 @@ import type { Task } from "../../../types/task";
 import { getTasks } from "../../../api/tasks";
 import "./TaskList.css";
 
+import edit from "../../../assets/icons/edit.svg";
+import trash from "../../../assets/icons/delete.svg";
+
 const TaskList = () => {
 	// функция с async ВСЕГДА возвращает Promise, даже если внутри есть return c данными.
 	// Поэтому при вызове getTasks() мы получаем не данные, а Promise,
@@ -36,6 +39,14 @@ const TaskList = () => {
 		});
 	}
 
+	function deleteTask(id: number) {
+		return setTaskList((prevState) => {
+			if (prevState === null) return null;
+
+			return prevState.filter((task) => task.id !== id);
+		});
+	}
+
 	if (taskList == null) {
 		return <div>Loading...</div>;
 	}
@@ -47,19 +58,11 @@ const TaskList = () => {
 	return (
 		<div className='py-3'>
 			{taskList.map(
-				({
-					id,
-					title,
-					description,
-					priority,
-					status,
-					// time,
-					labels,
-				}) => {
+				({ id, title, description, priority, status, time, labels }) => {
 					return (
 						<div
 							key={id}
-							className={`tasklist__container ${status} ${priority}`}>
+							className={`tasklist__container ui-fade-outline justify-between ${status} ${priority}`}>
 							<div className='flex items-start justify-between gap-2'>
 								<button
 									onClick={() => doneTask(id)}
@@ -85,9 +88,22 @@ const TaskList = () => {
 									) : null}
 								</div>
 							</div>
-							{/* <div className='flex items-center'>
-								{time ? <p>{time}</p> : null}
-							</div> */}
+							<div className='flex shrink-0 items-center justify-end gap-2'>
+								{time ? (
+									<p className='ui-btn ui-btn--primary font-light text-xs'>
+										{time}
+									</p>
+								) : null}
+
+								<button className='ui-btn py-3 px-4 bg-secondary'>
+									<img src={edit} />
+								</button>
+								<button
+									onClick={() => deleteTask(id)}
+									className='ui-btn py-3 px-4 bg-high'>
+									<img src={trash} />
+								</button>
+							</div>
 						</div>
 					);
 				},

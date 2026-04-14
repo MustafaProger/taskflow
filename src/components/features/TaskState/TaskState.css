@@ -43,5 +43,4 @@
 .task-state-indicator__inner--moving {
 	height: 120%;
 	transform: translateY(-4px) scale(1.2);
-	backdrop-filter: blur(0.5px);
 }

@@ -5,7 +5,7 @@
 	padding: 8px 16px 12px 16px;
 	transition: all 0.2s;
 	background-color: var(--color-bg-state);
-	border-left: transparent;
+	border-left: 0.01px solid transparent;
 
 	&.high .tasklist__btn-done {
 		border: 1px solid var(--color-high);
@@ -20,6 +20,7 @@
 	}
 
 	&.done {
+		opacity: 0.9;
         background-color: var(--color-bg-search);
 		.tasklist__title {
 			text-decoration: line-through;
@@ -75,7 +76,7 @@
 .tasklist__label-item {
 	color: var(--color-text-muted);
 	border-radius: 20px;
-	border-color: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.1);
 	background-color: rgba(255, 255, 255, 0.05);
 	padding: 4px 10px;
 	font-size: 12px;
