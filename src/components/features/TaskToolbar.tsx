@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useTaskStore } from "../../store/taskStore";
 import magnifier from "../../assets/icons/magnifier.svg";
 
 const TaskToolbar = () => {
-	const [search, setSearch] = useState<string>("");
+	const search = useTaskStore((state) => state.search);
+	const setSearch = useTaskStore((state) => state.setSearch);
 
 	return (
 		<div className='flex rounded-full ui-fade-outline w-full min-w-0 flex-wrap items-center gap-3'>

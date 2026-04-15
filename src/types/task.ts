@@ -1,3 +1,10 @@
+export type TaskFilterKey = "allTasks" | "active" | "done";
+
+export type TaskFilterType = {
+	key: TaskFilterKey;
+	label: string;
+};
+
 export type TaskPriority = "low" | "medium" | "high";
 
 export type TaskStatus = "active" | "done";

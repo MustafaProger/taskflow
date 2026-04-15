@@ -1,5 +1,5 @@
 import TaskList from "./components/features/TaskList/TaskList";
-import TaskState from "./components/features/TaskState/TaskState";
+import TaskFilter from "./components/features/TaskFilter/TaskFilter";
 import TaskToolbar from "./components/features/TaskToolbar";
 import Header from "./components/layout/Header/Header";
 
@@ -9,7 +9,7 @@ function App() {
 			<Header />
 			<section className='ui-fade-outline rounded-[28px] bg-bg-container p-[24px] backdrop-blur-xl'>
 				<TaskToolbar />
-				<TaskState />
+				<TaskFilter />
 				<TaskList />
 			</section>
 		</main>

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import type { Task } from "../../../types/task";
+import { useEffect } from "react";
+import { useTaskStore } from "../../../store/taskStore";
 import { getTasks } from "../../../api/tasks";
 import "./TaskList.css";
 
@@ -11,53 +11,31 @@ const TaskList = () => {
 	// Поэтому при вызове getTasks() мы получаем не данные, а Promise,
 	// и чтобы получить сами данные — нужно использовать await или then.
 
-	const [taskList, setTaskList] = useState<Task[] | null>(null);
+	const tasks = useTaskStore((state) => state.tasks);
+	const setTasks = useTaskStore((state) => state.setTasks);
+	const toggleTask = useTaskStore((state) => state.toggleTask);
+	const deleteTask = useTaskStore((state) => state.deleteTask);
 
 	useEffect(() => {
 		const loadTasks = async () => {
 			const getData = await getTasks();
-			setTaskList(getData);
+			setTasks(getData);
 		};
 
 		loadTasks();
 	}, []);
 
-	function doneTask(id: number) {
-		setTaskList((prevTaskList) => {
-			if (prevTaskList === null) return null;
-
-			return prevTaskList.map((task) => {
-				if (task.id !== id) {
-					return task;
-				}
-
-				return {
-					...task,
-					status: task.status === "active" ? "done" : "active",
-				};
-			});
-		});
-	}
-
-	function deleteTask(id: number) {
-		return setTaskList((prevState) => {
-			if (prevState === null) return null;
-
-			return prevState.filter((task) => task.id !== id);
-		});
-	}
-
-	if (taskList == null) {
+	if (tasks == null) {
 		return <div>Loading...</div>;
 	}
 
-	if (taskList.length === 0) {
+	if (tasks.length === 0) {
 		return <div>Список задач пуст</div>;
 	}
 
 	return (
 		<div className='py-3'>
-			{taskList.map(
+			{tasks.map(
 				({ id, title, description, priority, status, time, labels }) => {
 					return (
 						<div
@@ -65,7 +43,7 @@ const TaskList = () => {
 							className={`tasklist__container ui-fade-outline justify-between ${status} ${priority}`}>
 							<div className='flex items-start justify-between gap-2'>
 								<button
-									onClick={() => doneTask(id)}
+									onClick={() => toggleTask(id)}
 									className='tasklist__btn-done'
 								/>
 

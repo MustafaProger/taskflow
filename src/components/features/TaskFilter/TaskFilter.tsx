@@ -1,24 +1,13 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import "./TaskState.css";
-
-type TaskStateKey = "allTasks" | "active" | "done";
-
-type TaskStateType = {
-	key: TaskStateKey;
-	label: string;
-};
-
-const states: TaskStateType[] = [
-	{ key: "allTasks", label: "Все задачи" },
-	{ key: "active", label: "Активные" },
-	{ key: "done", label: "Выполненные" },
-];
+import { useTaskStore } from "../../../store/taskStore";
+import type { TaskFilterKey, TaskFilterType } from "../../../types/task";
+import "./TaskFilter.css";
 
 /*
 	Как работает этот компонент очень простым языком:
 
 	1. Пользователь кликает по кнопке.
-	2. onClick вызывает setActiveState(key).
+	2. onClick вызывает setActiveFilter(key).
 	3. Это не двигает индикатор сразу. React просто получает новые данные:
 	   "теперь активна другая кнопка".
 	4. React делает render:
@@ -51,7 +40,7 @@ const states: TaskStateType[] = [
 	    и индикатор возвращается в спокойное состояние.
 
 	Короткая формула:
-	клик -> новый activeState -> render -> DOM update -> ref на новой кнопке
+	клик -> новый activeFilter -> render -> DOM update -> ref на новой кнопке
 	-> useLayoutEffect -> новые координаты индикатора -> CSS animation
 	-> transition end -> isIndicatorMoving(false)
 
@@ -71,8 +60,17 @@ const states: TaskStateType[] = [
 	render = React пересчитывает, каким интерфейс должен быть
 	DOM update = React реально меняет страницу в браузере
 */
-const TaskState = () => {
-	const [activeState, setActiveState] = useState<TaskStateKey>("allTasks");
+
+const filters: TaskFilterType[] = [
+	{ key: "allTasks", label: "Все задачи" },
+	{ key: "active", label: "Активные" },
+	{ key: "done", label: "Выполненные" },
+];
+
+const TaskFilter = () => {
+	const activeFilter = useTaskStore((state) => state.filter);
+	const setFilter = useTaskStore((state) => state.setFilter);
+
 	const activeBtnRef = useRef<HTMLButtonElement | null>(null);
 	const [isIndicatorMoving, setIsIndicatorMoving] = useState(false);
 
@@ -83,8 +81,8 @@ const TaskState = () => {
 		transform: "translateX(0)",
 	});
 
-	function syncActiveBtnRef(el: HTMLButtonElement | null, key: TaskStateKey) {
-		if (el && key === activeState) {
+	function syncActiveBtnRef(el: HTMLButtonElement | null, key: TaskFilterKey) {
+		if (el && key === activeFilter) {
 			activeBtnRef.current = el;
 		}
 	}
@@ -104,7 +102,7 @@ const TaskState = () => {
 		});
 
 		setIsIndicatorMoving(true);
-	}, [activeState]);
+	}, [activeFilter]);
 
 	function handleIndicatorTransitionEnd(
 		event: React.TransitionEvent<HTMLSpanElement>,
@@ -121,14 +119,14 @@ const TaskState = () => {
 	return (
 		<div className='mt-5 flex justify-between gap-4'>
 			<div className='relative inline-flex gap-0 rounded-full bg-bg-state border border-white/10 p-0.5'>
-				{states.map(({ key, label }) => {
+				{filters.map(({ key, label }) => {
 					return (
 						<button
 							key={key}
-							onClick={() => setActiveState(key)}
+							onClick={() => setFilter(key)}
 							ref={(el) => syncActiveBtnRef(el, key)}
 							className={`z-1 ui-btn ${
-								key === activeState
+								key === activeFilter
 									? "text-text"
 									: "text-white/65 hover:text-text"
 							}`}>
@@ -152,4 +150,4 @@ const TaskState = () => {
 	);
 };
 
-export default TaskState;
+export default TaskFilter;
