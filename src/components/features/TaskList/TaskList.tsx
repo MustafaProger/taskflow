@@ -40,7 +40,7 @@ const TaskList = () => {
 					return (
 						<div
 							key={id}
-							className={`tasklist__container ui-fade-outline justify-between ${status} ${priority}`}>
+							className={`tasklist__item ui-fade-outline justify-between ${status} ${priority}`}>
 							<div className='flex items-start justify-between gap-2'>
 								<button
 									onClick={() => toggleTask(id)}
@@ -68,7 +68,7 @@ const TaskList = () => {
 							</div>
 							<div className='flex shrink-0 items-center justify-end gap-2'>
 								{time ? (
-									<p className='ui-btn ui-btn--primary font-light text-xs'>
+									<p className='tasklist__time ui-btn ui-btn--primary font-light text-xs'>
 										{time}
 									</p>
 								) : null}

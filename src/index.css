@@ -8,7 +8,7 @@
 	--color-bg-soft: #1a1c20;
 	--color-surface: #20232a;
 	--color-surface-strong: #2a2e36;
-	--color-border: rgba(255, 255, 255, 0.14);
+	--color-border: rgba(255, 255, 255, 0.24);
 	--color-text: rgba(255, 255, 255, 0.96);
 	--color-text-muted: rgba(255, 255, 255, 0.72);
 
@@ -82,6 +82,7 @@
 	.ui-btn--primary {
 		background: rgba(255, 255, 255, 0.08);
 		color: var(--color-text);
+		/* min-width: 800px; */
 	}
 
 	.ui-btn--secondary {
@@ -96,12 +97,12 @@
 		inset: 0;
 		border-radius: inherit;
 		pointer-events: none;
+		border: 0.5px solid var(--color-border);
 	}
 
 	.ui-fade-outline::before {
-		border: 0.8px solid var(--color-border);
 		mask-image: linear-gradient(
-			150deg,
+			220deg,
 			transparent 2%,
 			transparent 2%,
 			#000 5%,
@@ -112,14 +113,14 @@
 	}
 
 	.ui-btn--primary::before {
-		border: 2px solid var(--color-border);
+		border: 1.5px solid var(--color-border);
 		mask-image: linear-gradient(
-			300deg,
-			transparent 30%,
-			transparent 60%,
-			#000 100%,
-			#000 100%,
-			transparent 100%
+			220deg,
+			transparent 15%,
+			#000 60%,
+			#000 50%,
+			transparent 90%,
+			transparent 90%
 		);
 	}
 }

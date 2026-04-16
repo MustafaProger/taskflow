@@ -1,4 +1,4 @@
-.tasklist__container {
+.tasklist__item {
 	display: flex;
 	border-radius: 20px;
 	margin: 8px 0;
@@ -80,4 +80,8 @@
 	background-color: rgba(255, 255, 255, 0.05);
 	padding: 4px 10px;
 	font-size: 12px;
+}
+ 
+.tasklist__time.ui-btn--primary::before {
+	border: 1px solid var(--color-border);
 }

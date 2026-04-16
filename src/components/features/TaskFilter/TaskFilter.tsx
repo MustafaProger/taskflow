@@ -117,15 +117,15 @@ const TaskFilter = () => {
 	}
 
 	return (
-		<div className='mt-5 flex justify-between gap-4'>
-			<div className='relative inline-flex gap-0 rounded-full bg-bg-state border border-white/10 p-0.5'>
+		<div className=' mt-5 flex justify-between gap-4'>
+			<div className='ui-fade-outline relative inline-flex gap-0 rounded-full bg-bg-state p-0.5'>
 				{filters.map(({ key, label }) => {
 					return (
 						<button
 							key={key}
 							onClick={() => setFilter(key)}
 							ref={(el) => syncActiveBtnRef(el, key)}
-							className={`z-1 ui-btn ${
+							className={`z-1 ui-btn font-medium ${
 								key === activeFilter
 									? "text-text"
 									: "text-white/65 hover:text-text"
