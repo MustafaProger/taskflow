@@ -2,15 +2,17 @@
 
 @theme {
 	--color-primary: #f3f4f6;
-	--color-primary-ink: #050505;
+	/* --color-primary-ink: #050505; */
+
 	--color-secondary: #3a83f6;
 	--color-bg: #121316;
-	--color-bg-soft: #1a1c20;
-	--color-surface: #20232a;
-	--color-surface-strong: #2a2e36;
+	/* --color-bg-soft: #1a1c20; */
+
+	/* --color-surface: #20232a; */
+	/* --color-surface-strong: #2a2e36; */
 	--color-border: rgba(255, 255, 255, 0.24);
 	--color-text: rgba(255, 255, 255, 0.96);
-	--color-text-muted: rgba(255, 255, 255, 0.72);
+	/* --color-text-muted: rgba(255, 255, 255, 0.72); */
 
 	--color-bg-container: rgba(255, 255, 255, 0.03);
 	--color-bg-search: rgba(255, 255, 255, 0.07);
@@ -19,6 +21,9 @@
 	--color-high: #ff6247;
 	--color-medium: #ffa503;
 	--color-low: #3a83f6;
+
+	--breakpoint-screen-425: 425px;
+	--breakpoint-screen-567: 567px;
 }
 
 @layer base {
@@ -82,7 +87,6 @@
 	.ui-btn--primary {
 		background: rgba(255, 255, 255, 0.08);
 		color: var(--color-text);
-		/* min-width: 800px; */
 	}
 
 	.ui-btn--secondary {
@@ -91,7 +95,8 @@
 	}
 
 	.ui-fade-outline::before,
-	.ui-btn--primary::before {
+	.ui-btn--primary::before,
+	.ui-btn--secondary::before {
 		content: "";
 		position: absolute;
 		inset: 0;
@@ -112,8 +117,9 @@
 		);
 	}
 
-	.ui-btn--primary::before {
-		border: 1.5px solid var(--color-border);
+	.ui-btn--primary::before,
+	.ui-btn--secondary::before {
+		border: 1.2px solid var(--color-border);
 		mask-image: linear-gradient(
 			220deg,
 			transparent 15%,

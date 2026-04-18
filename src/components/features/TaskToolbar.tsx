@@ -6,8 +6,8 @@ const TaskToolbar = () => {
 	const setSearch = useTaskStore((state) => state.setSearch);
 
 	return (
-		<div className='flex rounded-full ui-fade-outline w-full min-w-0 flex-wrap items-center gap-3'>
-			<div className='group flex min-w-0 flex-1 items-center gap-3 rounded-full bg-bg-search px-3.5 py-3 transition-all duration-150 focus-within:bg-white/9'>
+		<div className='flex rounded-full w-full min-w-0 flex-wrap items-center gap-3'>
+			<div className='group ui-fade-outline flex min-w-0 flex-1 items-center gap-3 rounded-full bg-bg-search px-3.5 py-3 transition-all duration-150 focus-within:bg-white/9'>
 				<img
 					className='size-[18px] shrink-0 opacity-85'
 					src={magnifier}
@@ -22,6 +22,7 @@ const TaskToolbar = () => {
 					className='w-full ui-fade-outline min-w-0 bg-transparent p-0 text-[1.02rem] tracking-[-0.01em] text-white placeholder:text-white/45 focus:outline-none'
 				/>
 			</div>
+			<button className='ui-btn ui-btn--secondary screen-567:hidden'>+</button>
 		</div>
 	);
 };

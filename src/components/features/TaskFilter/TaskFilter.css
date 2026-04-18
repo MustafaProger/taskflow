@@ -9,12 +9,26 @@
 	4. Браузер видит, что значения изменились, и плавно анимирует их через transition.
 	5. Когда transform закончился, React получает onTransitionEnd
 	   и убирает состояние движения.
-*/
-.task-state-indicator {
+	*/
+.task-state {
+	margin: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.task-state__btns {
+	display: flex;
+	border-radius: 999px;
+	background-color: var(--color-bg-state);
+	padding: 4px;
+}
+
+.task-state__indicator {
 	pointer-events: none;
 	position: absolute;
-	left: 0;
-	top: 2px;
+	top: 0px;
+	left: 0.5px;
 	z-index: 0;
 	height: calc(100% - 4px);
 	transition:
@@ -23,7 +37,7 @@
 		height ease-out 0.3s;
 }
 
-.task-state-indicator__inner {
+.task-state__indicator-inner {
 	display: block;
 	position: absolute;
 	width: 100%;
@@ -40,7 +54,15 @@
 	backdrop-filter: blur(0.5px);
 }
 
-.task-state-indicator__inner--moving {
+.task-state__indicator-inner--moving {
 	height: 120%;
 	transform: translateY(-4px) scale(1.2);
+}
+
+@media (max-width: 425px) {
+	.task-state__btns {
+		width: 100%;
+		flex-direction: column;
+		border-radius: 20px;
+	}
 }

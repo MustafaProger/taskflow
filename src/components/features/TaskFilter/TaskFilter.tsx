@@ -77,6 +77,7 @@ const TaskFilter = () => {
 	const [indicatorStyle, setIndicatorStyle] = useState<{
 		transform: string;
 		width?: number;
+		height?: number;
 	}>({
 		transform: "translateX(0)",
 	});
@@ -92,13 +93,16 @@ const TaskFilter = () => {
 	useLayoutEffect(() => {
 		const activeButton = activeBtnRef.current;
 
+		console.log(activeBtnRef)
+
 		if (!activeButton) {
 			return;
 		}
 
 		setIndicatorStyle({
-			transform: `translateX(${activeButton.offsetLeft}px)`,
+			transform: `translateX(${activeButton.offsetLeft}px) translateY(${activeButton.offsetTop}px)`,
 			width: activeButton.offsetWidth,
+			height: activeButton.offsetHeight,
 		});
 
 		setIsIndicatorMoving(true);
@@ -117,8 +121,8 @@ const TaskFilter = () => {
 	}
 
 	return (
-		<div className=' mt-5 flex justify-between gap-4'>
-			<div className='ui-fade-outline relative inline-flex gap-0 rounded-full bg-bg-state p-0.5'>
+		<div className='task-state'>
+			<div className='task-state__btns ui-fade-outline'>
 				{filters.map(({ key, label }) => {
 					return (
 						<button
@@ -136,16 +140,16 @@ const TaskFilter = () => {
 				})}
 
 				<span
-					className='task-state-indicator'
+					className='task-state__indicator'
 					style={indicatorStyle}
 					onTransitionEnd={handleIndicatorTransitionEnd}>
 					<span
-						className={`task-state-indicator__inner ${
-							isIndicatorMoving ? "task-state-indicator__inner--moving" : ""
+						className={`task-state__indicator-inner ${
+							isIndicatorMoving ? "task-state__indicator-inner--moving" : ""
 						}`}></span>
 				</span>
 			</div>
-			<button className='ui-btn ui-btn--secondary'>+</button>
+				<button className='ui-btn ui-btn--secondary hidden screen-567:block'>+</button>
 		</div>
 	);
 };

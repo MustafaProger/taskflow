@@ -15,6 +15,8 @@ const TaskList = () => {
 	const setTasks = useTaskStore((state) => state.setTasks);
 	const toggleTask = useTaskStore((state) => state.toggleTask);
 	const deleteTask = useTaskStore((state) => state.deleteTask);
+	const search = useTaskStore((state) => state.search);
+	const filter = useTaskStore((state) => state.filter);
 
 	useEffect(() => {
 		const loadTasks = async () => {
@@ -33,15 +35,23 @@ const TaskList = () => {
 		return <div>Список задач пуст</div>;
 	}
 
+	const tasksAfterSearch = tasks.filter((task) =>
+		task.title.toLowerCase().includes(search.toLowerCase()),
+	);
+
+	const tasksAfterFilter = tasksAfterSearch.filter((task) =>
+		filter === "allTasks" ? task : task.status === filter,
+	);
+
 	return (
-		<div className='py-3'>
-			{tasks.map(
+		<div className='tasklist'>
+			{tasksAfterFilter.map(
 				({ id, title, description, priority, status, time, labels }) => {
 					return (
 						<div
 							key={id}
-							className={`tasklist__item ui-fade-outline justify-between ${status} ${priority}`}>
-							<div className='flex items-start justify-between gap-2'>
+							className={`tasklist__item ui-fade-outline ${status} ${priority}`}>
+							<div className='flex items-start gap-2'>
 								<button
 									onClick={() => toggleTask(id)}
 									className='tasklist__btn-done'
