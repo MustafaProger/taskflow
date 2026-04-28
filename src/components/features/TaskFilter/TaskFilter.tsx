@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { useTaskStore } from "../../../store/taskStore";
 import type { TaskFilterKey, TaskFilterType } from "../../../types/task";
 import "./TaskFilter.css";
+import AddOrEditTask from "../AddOrEditTask";
 
 /*
 	Как работает этот компонент очень простым языком:
@@ -155,9 +156,8 @@ const TaskFilter = () => {
 						}`}></span>
 				</span>
 			</div>
-			<button className='ui-btn ui-btn--secondary hidden screen-567:block'>
-				+
-			</button>
+
+			<AddOrEditTask className='hidden sm:block'>+</AddOrEditTask>
 		</div>
 	);
 };

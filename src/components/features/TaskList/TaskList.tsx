@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTaskStore } from "../../../store/taskStore";
 import { getTasks } from "../../../api/tasks";
 import "./TaskList.css";
 
 import edit from "../../../assets/icons/edit.svg";
 import trash from "../../../assets/icons/delete.svg";
+import actions_with_tasks from "../../../assets/icons/actions_with_tasks.svg";
+import AddOrEditTask from "../AddOrEditTask";
 
 const TaskList = () => {
 	// функция с async ВСЕГДА возвращает Promise, даже если внутри есть return c данными.
@@ -17,6 +19,8 @@ const TaskList = () => {
 	const deleteTask = useTaskStore((state) => state.deleteTask);
 	const search = useTaskStore((state) => state.search);
 	const filter = useTaskStore((state) => state.filter);
+
+	const [activeActionId, setActiveActionId] = useState<null | number>(null);
 
 	useEffect(() => {
 		const loadTasks = async () => {
@@ -58,14 +62,17 @@ const TaskList = () => {
 								/>
 
 								<div>
-									<h3 className='tasklist__title'>{title}</h3>
+									<h4 className='tasklist__title'>{title}</h4>
 									{description ? (
 										<p className='tasklist__descr'>{description}</p>
 									) : null}
 
-									{labels?.length ? (
+									{time ? (
 										<div className='tasklist__label-list'>
-											{labels.map((label, i) => (
+											<p className='tasklist__time ui-btn ui-btn--primary'>
+												{time}
+											</p>
+											{labels?.map((label, i) => (
 												<span
 													key={`${label}-${i}`}
 													className='tasklist__label-item'>
@@ -76,22 +83,32 @@ const TaskList = () => {
 									) : null}
 								</div>
 							</div>
-							<div className='flex shrink-0 items-center justify-end gap-2'>
-								{time ? (
-									<p className='tasklist__time ui-btn ui-btn--primary font-light text-xs'>
-										{time}
-									</p>
-								) : null}
-
-								<button className='ui-btn py-3 px-4 bg-secondary'>
-									<img src={edit} />
-								</button>
-								<button
-									onClick={() => deleteTask(id)}
-									className='ui-btn py-3 px-4 bg-high'>
-									<img src={trash} />
-								</button>
+							<div className='flex items-center pr-3 relative'>
+								<img
+									onClick={() =>
+										setActiveActionId((prevId) => (prevId === id ? null : id))
+									}
+									src={actions_with_tasks}
+								/>
 							</div>
+							{activeActionId === id && (
+								<div className='absolute right-15 top-[50%] translate-y-[-50%] flex gap-2'>
+									<AddOrEditTask className='flex gap-2 p-0 items-center'>
+										<img
+											className='rounded-full px-3 py-2 bg-low'
+											src={edit}
+										/>
+									</AddOrEditTask>
+									<button
+										onClick={() => deleteTask(id)}
+										className='flex gap-2 items-center'>
+										<img
+											className='rounded-full px-3 py-2 bg-high'
+											src={trash}
+										/>
+									</button>
+								</div>
+							)}
 						</div>
 					);
 				},

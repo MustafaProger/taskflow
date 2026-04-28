@@ -54,18 +54,20 @@
 	border-radius: calc(infinity * 1px);
 	font-size: 12px;
 	padding: 8px 12px;
-	margin-top: 6px;
+	margin-top: 4px;
 	background-color: transparent;
 }
 
 .tasklist__title {
 	color: var(--color-text);
-	font-size: 20px;
+	font-size: 18px;
+	font-weight: 500;
 }
 
 .tasklist__descr {
 	color: var(--color-text-muted);
 	font-size: 14px;
+	font-weight: 300;
 }
 
 .tasklist__label-list {
@@ -83,14 +85,24 @@
 	font-size: 12px;
 }
 
+.tasklist__time {
+	font-size: 12px;
+	font-weight: 300;
+	padding: 5px 13px;
+}
+
 .tasklist__time.ui-btn--primary::before {
 	border: 1px solid var(--color-border);
 }
 
-@media (max-width: 567px) {
-	.tasklist__item {
-		flex-direction: column;
-		justify-content: start;
-		gap: 20px;
+@media (max-width: 500px) {
+	.tasklist__label-item {
+		font-size: 11px;
+		padding: 3px 8px;
+	}
+
+	.tasklist__time {
+		font-size: 11px;
+		padding: 4px 9px;
 	}
 }

@@ -22,8 +22,8 @@
 	--color-medium: #ffa503;
 	--color-low: #3a83f6;
 
-	--breakpoint-screen-425: 425px;
-	--breakpoint-screen-567: 567px;
+	--breakpoint-screen-425: 426px;
+	--breakpoint-screen-500: 501px;
 }
 
 @layer base {
@@ -128,5 +128,12 @@
 			transparent 90%,
 			transparent 90%
 		);
+	}
+
+	@media (max-width: 500px) {
+		.ui-btn {
+			padding: 6px 14px;
+			font-size: 14px;
+		}
 	}
 }
