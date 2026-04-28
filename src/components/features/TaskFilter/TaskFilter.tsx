@@ -92,20 +92,26 @@ const TaskFilter = () => {
 	// до того, как браузер покажет кадр на экране.
 	useLayoutEffect(() => {
 		const activeButton = activeBtnRef.current;
+		if (!activeButton) return;
 
-		console.log(activeBtnRef)
-
-		if (!activeButton) {
-			return;
+		function updateStyle(button: HTMLButtonElement) {
+			setIndicatorStyle({
+				transform: `translateX(${button.offsetLeft}px) translateY(${button.offsetTop}px)`,
+				width: button.offsetWidth,
+				height: button.offsetHeight,
+			});
 		}
-
-		setIndicatorStyle({
-			transform: `translateX(${activeButton.offsetLeft}px) translateY(${activeButton.offsetTop}px)`,
-			width: activeButton.offsetWidth,
-			height: activeButton.offsetHeight,
+		const observer = new ResizeObserver(() => {
+			updateStyle(activeButton);
 		});
 
+		updateStyle(activeButton);
+		observer.observe(activeButton);
+
+		// eslint-disable-next-line react-hooks/set-state-in-effect
 		setIsIndicatorMoving(true);
+
+		return () => observer.disconnect();
 	}, [activeFilter]);
 
 	function handleIndicatorTransitionEnd(
@@ -149,7 +155,9 @@ const TaskFilter = () => {
 						}`}></span>
 				</span>
 			</div>
-				<button className='ui-btn ui-btn--secondary hidden screen-567:block'>+</button>
+			<button className='ui-btn ui-btn--secondary hidden screen-567:block'>
+				+
+			</button>
 		</div>
 	);
 };
