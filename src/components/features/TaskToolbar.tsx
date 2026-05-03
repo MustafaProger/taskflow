@@ -1,6 +1,6 @@
 import { useTaskStore } from "../../store/taskStore";
 import magnifier from "../../assets/icons/magnifier.svg";
-import AddOrEditTask from "./AddOrEditTask";
+import AddTaskButton from "./AddTaskButton";
 
 const TaskToolbar = () => {
 	const search = useTaskStore((state) => state.search);
@@ -23,7 +23,7 @@ const TaskToolbar = () => {
 					className='w-full ui-fade-outline min-w-0 bg-transparent p-0 text-sm screen-500:text-base tracking-[-0.01em] text-white placeholder:text-white/45 focus:outline-none'
 				/>
 			</div>
-			<AddOrEditTask className='sm:hidden'>+</AddOrEditTask>
+			<AddTaskButton className='sm:hidden'>+</AddTaskButton>
 		</div>
 	);
 };

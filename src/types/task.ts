@@ -10,10 +10,10 @@ export type TaskPriority = "low" | "medium" | "high";
 export type TaskStatus = "active" | "done";
 
 export type Task = {
-	id: number;
+	id: string;
 	title: string;
 	description?: string;
-	priority: TaskPriority;
+	priority?: TaskPriority;
 	status: TaskStatus;
 	time?: string;
 	labels?: string[];

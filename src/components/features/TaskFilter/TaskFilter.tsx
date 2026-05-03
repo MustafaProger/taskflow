@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { useTaskStore } from "../../../store/taskStore";
 import type { TaskFilterKey, TaskFilterType } from "../../../types/task";
 import "./TaskFilter.css";
-import AddOrEditTask from "../AddOrEditTask";
+import AddTaskButton from "../AddTaskButton";
 
 /*
 	Как работает этот компонент очень простым языком:
@@ -157,7 +157,7 @@ const TaskFilter = () => {
 				</span>
 			</div>
 
-			<AddOrEditTask className='hidden sm:block'>+</AddOrEditTask>
+			<AddTaskButton className='hidden sm:block'>+</AddTaskButton>
 		</div>
 	);
 };

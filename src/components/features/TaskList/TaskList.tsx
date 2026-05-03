@@ -6,7 +6,6 @@ import "./TaskList.css";
 import edit from "../../../assets/icons/edit.svg";
 import trash from "../../../assets/icons/delete.svg";
 import actions_with_tasks from "../../../assets/icons/actions_with_tasks.svg";
-import AddOrEditTask from "../AddOrEditTask";
 
 const TaskList = () => {
 	// функция с async ВСЕГДА возвращает Promise, даже если внутри есть return c данными.
@@ -20,7 +19,7 @@ const TaskList = () => {
 	const search = useTaskStore((state) => state.search);
 	const filter = useTaskStore((state) => state.filter);
 
-	const [activeActionId, setActiveActionId] = useState<null | number>(null);
+	const [activeActionId, setActiveActionId] = useState<string>("");
 
 	useEffect(() => {
 		const loadTasks = async () => {
@@ -86,19 +85,19 @@ const TaskList = () => {
 							<div className='flex items-center pr-3 relative'>
 								<img
 									onClick={() =>
-										setActiveActionId((prevId) => (prevId === id ? null : id))
+										setActiveActionId((prevId) => (prevId === id ? "" : id))
 									}
 									src={actions_with_tasks}
 								/>
 							</div>
 							{activeActionId === id && (
 								<div className='absolute right-15 top-[50%] translate-y-[-50%] flex gap-2'>
-									<AddOrEditTask className='flex gap-2 p-0 items-center'>
+									<button className='flex gap-2 p-0 items-center'>
 										<img
 											className='rounded-full px-3 py-2 bg-low'
 											src={edit}
 										/>
-									</AddOrEditTask>
+									</button>
 									<button
 										onClick={() => deleteTask(id)}
 										className='flex gap-2 items-center'>

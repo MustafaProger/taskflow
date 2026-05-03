@@ -1,0 +1,61 @@
+.add-task {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+.add-task::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.add-task.opened {
+	display: block;
+}
+
+.add-task__container {
+	max-width: 700px;
+	min-width: 300px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 1000;
+	transform: translate(-50%, -50%);
+
+	display: flex;
+	gap: 10px;
+	flex-direction: column;
+	border-radius: 20px;
+	padding: 20px;
+
+	background-color: #292a2d;
+	overflow-y: auto;
+}
+
+.add-task__title {
+	font-size: 20px;
+}
+
+.add-task__descr {
+}
+
+.add-task__button {
+	margin-top: 20px;
+	opacity: 1;
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}

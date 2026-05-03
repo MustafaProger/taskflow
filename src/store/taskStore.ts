@@ -6,13 +6,17 @@ type TaskStore = {
 	tasks: Task[];
 	filter: TaskFilterKey;
 	search: string;
+	isAddTaskOpen: boolean;
 
 	// actions
 	setTasks: (tasks: Task[]) => void;
-	toggleTask: (id: number) => void;
-	deleteTask: (id: number) => void;
+	toggleTask: (id: string) => void;
+	deleteTask: (id: string) => void;
 	setFilter: (filter: TaskFilterKey) => void;
 	setSearch: (text: string) => void;
+	setIsAddTaskOpen: (booleanValue: boolean) => void;
+	setIsAddTaskClose: (booleanValue: boolean) => void;
+	setAddTask: (task: Task) => void;
 };
 
 // create<TaskStore>()((set) => ({ ... }))
@@ -46,6 +50,7 @@ export const useTaskStore = create<TaskStore>()((set) => ({
 	tasks: [],
 	filter: "allTasks",
 	search: "",
+	isAddTaskOpen: false,
 
 	// -----------------------
 	// ACTIONS
@@ -94,4 +99,19 @@ export const useTaskStore = create<TaskStore>()((set) => ({
 
 	setFilter: (filter) => set({ filter }),
 	setSearch: (search) => set({ search }),
+	setIsAddTaskOpen: (booleanValue) =>
+		set(() => {
+			document.body.classList.add("no-scroll");
+			return { isAddTaskOpen: booleanValue };
+		}),
+	setIsAddTaskClose: (booleanValue) =>
+		set(() => {
+			document.body.classList.remove("no-scroll");
+			return { isAddTaskOpen: booleanValue };
+		}),
+
+	setAddTask: (task) =>
+		set((state) => ({
+			tasks: [...state.tasks, task],
+		})),
 }));
