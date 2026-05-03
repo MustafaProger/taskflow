@@ -72,6 +72,10 @@
 		font: inherit;
 	}
 
+	img {
+		max-width: initial;
+	}
+
 	.no-scroll {
 		overflow: hidden;
 	}
@@ -138,11 +142,10 @@
 			transparent 90%
 		);
 	}
-
+	/* 
 	@media (max-width: 500px) {
 		.ui-btn {
-			padding: 6px 14px;
 			font-size: 14px;
 		}
-	}
+	} */
 }

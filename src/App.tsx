@@ -3,6 +3,7 @@ import TaskFilter from "./components/features/TaskFilter/TaskFilter";
 import TaskToolbar from "./components/features/TaskToolbar";
 import Header from "./components/layout/Header/Header";
 import AddTaskWindow from "./components/features/AddTaskWindow/AddTaskWindow";
+import AddTaskButton from "./components/features/AddTaskButton";
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 				<TaskFilter />
 				<TaskList />
 			</section>
+			<AddTaskButton className='sm:hidden text-2xl fixed bottom-10 right-10'>+</AddTaskButton>
 			<AddTaskWindow />
 		</main>
 	);

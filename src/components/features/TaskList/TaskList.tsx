@@ -82,7 +82,7 @@ const TaskList = () => {
 									) : null}
 								</div>
 							</div>
-							<div className='flex items-center pr-3 relative'>
+							<div className='flex items-center screen-500:pr-3 relative'>
 								<img
 									onClick={() =>
 										setActiveActionId((prevId) => (prevId === id ? "" : id))
